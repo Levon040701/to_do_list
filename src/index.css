@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input, button {
+    margin: 5px;
+    padding: 8px;
+}
+
+input {
+    padding: 16px 12px;
+    border: none;
+    border-radius: 16px;
+    outline: none;
+    background-color: #202938;
+    color: #6a7080;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: #6a7080;
+    font-size: 1rem;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+}
+
+.app {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #384152;
+    color: #6a7080;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    width: 100%;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.header h1 {
+    margin: 16px 8px;
+}
+
+.task-list {
+    margin-bottom: 48px;
+}
+
+.task-list h3 {
+    margin-bottom: 16px;
+}
+
+.list-item {
+    margin-bottom: 16px;
+    padding: 16px 12px;
+    border-radius: 16px;
+    background-color: #111828;
+    color: #6a7080;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-text {
+    flex: 8;
+    margin: 4px 0;
+    line-height: 2rem;
+}
+
+.item-btns {
+    flex: 2;
+    margin: 4px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-btn {
+    padding: 2px;
+    border: none;
+    background-color: transparent;
+    color: #b92443;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: transition, background-color 0.2s, ease-out;
+}
+
+.edit-btn {
+    background-image: linear-gradient(to right, #b05ca3 0%, #7c5cc3 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.item-btn:hover {
+    color: rgb(108, 189, 235);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-image: linear-gradient(to right, #00debd 0%, #0044ff 100%);
+}
+
+.add-task-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-task-form input {
+    flex: 8;
+}
+
+.add-task-form button{
+    flex: 2;
+    text-transform: none;
+}
+
