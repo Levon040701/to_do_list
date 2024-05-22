@@ -1,26 +1,14 @@
 import ListItem from './ListItem'
 
-const TaskList = () => {
-  // const listStyle = {
-  //   marginBottom: '48px',
-  // };
-  // const headingStyle = {
-  //   color: '#6a7080'
-  // };
-  // const ulStyle = {
-  //   padding: '0',
-  //   listStyle: 'none'
-  // };
+const TaskList = ({items, handleEdit, handleDelete}) => {
+  const jsxArray = items.map((obj) => (
+    <ListItem itemText={obj.itemText} id={obj.id} key={obj.id} handleEdit={handleEdit} handleDelete={handleDelete}></ListItem>
+  ));
 
   return (
     <div className='task-list'>
       <h3>Tasks</h3>
-      <ul>
-        <ListItem></ListItem>
-        <ListItem></ListItem>
-        <ListItem></ListItem>
-        <ListItem></ListItem>
-      </ul>
+      <ul>{jsxArray}</ul>
     </div>
   );
 };

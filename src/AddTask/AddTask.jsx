@@ -1,33 +1,27 @@
-const AddTask = () => {
-    // const formStyle = {
-    //   display: 'flex',
-    //   justifyContent: 'space-between'
-    // }
-    // const inputStyle = {
-    //   flex: '10',
-    //   padding: '16px 12px',
-    //   border: 'none',
-    //   borderRadius: '16px',
-    //   backgroundColor: '#202938',
-    //   color: '#6a7080',
-    //   boxSizing: 'border-box'
-    // };
-    // const btnStyle = {
-    //   flex: '1',
-    //   border: 'none',
-    //   backgroundColor: 'transparent',
-    //   color: 'violet',
-    //   fontWeight: '700',
-    //   cursor: 'pointer'
-    // };
-    const texts = {placeholder: 'What do you have planned? ', btn: 'Add task'};
+import { useState } from "react";
+
+const AddTask = ({handleAdd}) => {
+  const [taskText, setTaskText] = useState('');
+
+  const handleOnChange = (e) => {
+    setTaskText(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    if (taskText) {
+      handleAdd(taskText);
+      setTaskText('');
+    }
+  };
+
+  const texts = {placeholder: 'What do you have planned? ', btn: 'Add task'};
   
-    return (
-      <form action="" className='add-task-form'>
-        <input type="text" placeholder={texts.placeholder} />
-        <button className='item-btn edit-btn'>{texts.btn}</button>
-      </form>
-    );
+  return (
+    <div className='add-task-form'>
+      <input onChange={handleOnChange} type="text" placeholder={texts.placeholder} value={taskText} />
+      <button className='item-btn edit-btn' onClick={handleButtonClick}>{texts.btn}</button>
+    </div>
+  );
 };
 
 export default AddTask;

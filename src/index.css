@@ -95,7 +95,7 @@ ul {
     font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;
-    transition: transition, background-color 0.2s, ease-out;
+    transition: transform, background-color 0.2s, ease-out;
 }
 
 .edit-btn {
