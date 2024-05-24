@@ -1,13 +1,8 @@
-const Header = ({text, filter}) => {
-  const handleOnChange = (e) => {
-    console.log(e.target.value);
-    filter(e.target.value);
-  };
-
+const Header = ({text, searchText, setSearchText}) => {
   return (
     <div className="header">
       <h1>{text}</h1>
-      <input onChange={handleOnChange} type="text" placeholder='Filter tasks' />
+      <input onChange={(e) => setSearchText(e.target.value)} type="text" placeholder='Filter tasks' value={searchText} />
     </div>
   );
 };

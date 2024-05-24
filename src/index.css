@@ -105,6 +105,13 @@ ul {
     -webkit-text-fill-color: transparent;
 }
 
+.save-btn {
+    background-image: linear-gradient(to right, #b05ca3 0%, #7c5cc3 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .item-btn:hover {
     color: rgb(108, 189, 235);
     transform: scale(1.05);

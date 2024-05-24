@@ -1,11 +1,18 @@
-const ListItem = ({id, itemText, handleEdit, handleDelete}) => {
+const ListItem = ({id, itemText, isEditing, editText, setEditText, handleEdit, handleSave, handleDelete}) => {
   return (
-    <li className='list-item'>
+    <li className='list-item' id={'item-'+id}>
         <span className='item-text'>
-          #{id}. {itemText}
-          </span>
+          <span>#{id}. </span>
+          {isEditing[id] ?
+            (<input value={editText} onChange={(e) => setEditText(e.target.value)}></input> ) :
+            (<span>{itemText}</span>)
+          }
+        </span>
         <span className='item-btns'>
-          <button className='item-btn edit-btn' onClick={() => {handleEdit(id)}}>edit</button>
+          {isEditing[id] ?
+            (<button className='item-btn save-btn' onClick={() => {handleSave(id)}}>save</button>) :
+            (<button className='item-btn edit-btn' onClick={() => {handleEdit(id, itemText)}}>edit</button>)
+          }
           <button className='item-btn' onClick={() => {handleDelete(id)}}>delete</button>
         </span>
     </li>
@@ -13,5 +20,4 @@ const ListItem = ({id, itemText, handleEdit, handleDelete}) => {
 };
 
 export default ListItem;
-  
-  
+

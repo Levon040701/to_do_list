@@ -1,8 +1,8 @@
 import ListItem from './ListItem'
 
-const TaskList = ({items, handleEdit, handleDelete}) => {
+const TaskList = ({items, isEditing, editText, setEditText, handleEdit, handleSave, handleDelete}) => {
   const jsxArray = items.map((obj) => (
-    <ListItem itemText={obj.itemText} id={obj.id} key={obj.id} handleEdit={handleEdit} handleDelete={handleDelete}></ListItem>
+    <ListItem itemText={obj.itemText} id={obj.id} key={obj.id} isEditing={isEditing} editText={editText} setEditText={setEditText} handleEdit={handleEdit} handleSave={handleSave} handleDelete={handleDelete}></ListItem>
   ));
 
   return (

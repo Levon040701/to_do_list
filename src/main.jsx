@@ -4,16 +4,33 @@ import './index.css'
 
 import Header from './Header/Header';
 import TaskList from './TaskList/TaskList';
-import AddTask from './AddTask/AddTask'
+import AddTask from './AddTask/AddTask';
 
 const App = () => {
   const headerText = 'Task List';
 
   const [todoItems, setTodoItems] = useState([]);
-  const [added, setAdded] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [editText, setEditText] = useState('');
+  const [isEditing, setEditing] = useState({});
 
-  const handleEdit = (id) => {
-    console.log(`Edit ${id}`);
+  const handleEdit = (id, itemText) => {
+    setEditText(itemText);
+    isEditing[id] = true;
+    setEditing({...isEditing})
+  };
+
+  const handleSave = (id) => {
+    if (!' \n\t'.includes(editText)) {
+      for (let i = 0; i < todoItems.length; i++) {
+        if (todoItems[i].id === id) {
+          todoItems[i].itemText = editText;
+          break;
+        }
+      }
+    }
+    isEditing[id] = false;
+    setEditing({...isEditing});
   };
 
   const handleDelete = (id) => {
@@ -22,32 +39,24 @@ const App = () => {
   };
 
   const handleAdd = (text) => {
-    added.push({
+    todoItems.push({
       itemText: text,
       id: todoItems.length ? todoItems[todoItems.length - 1].id + 1 : 1
     });
-    setAdded([...added]);
-    setTodoItems([...added]);
+    setTodoItems([...todoItems]);
+
+    isEditing[todoItems.length ? todoItems[todoItems.length - 1].id : 1] = false;
+    setEditing({...isEditing});
   };
 
-  const filter = (text) => {
-    if (text) {
-      const matches = [];
-      added.forEach((task) => {
-        if (task.itemText.includes(text)) {
-          matches.push(task);
-        }
-      });
-      setTodoItems(matches);
-    } else {
-      setTodoItems(added);
-    }
-  };
+  const filteredTasks = todoItems.filter((task) => 
+    task.itemText.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <div className='app'>
-      <Header text={headerText} filter={filter}></Header>
-      <TaskList items={todoItems} handleEdit={handleEdit} handleDelete={handleDelete}></TaskList>
+      <Header text={headerText} searchText={searchText} setSearchText={setSearchText}></Header>
+      <TaskList items={filteredTasks} isEditing={isEditing} editText={editText} setEditText={setEditText} handleEdit={handleEdit} handleSave={handleSave} handleDelete={handleDelete}></TaskList>
       <AddTask handleAdd={handleAdd}></AddTask>
     </div>
   );
